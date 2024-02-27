@@ -100,6 +100,10 @@ data:
           proxy_pass http://shipping:8080/;
         }
 
+        location /api/payment/ {
+          proxy_pass http://payment:8080/;
+        }
+
 
     }
 
@@ -131,7 +135,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: sureshgurrala/web:v1
+        image: joindevops/web:v1
         imagePullPolicy: Always
         volumeMounts:
         - name: nginx-conf
@@ -160,4 +164,4 @@ spec:
   ports:
   - protocol: TCP
     port: 80 #service-port
-    targetPort: 80 #container-port number
+    targetPort: 80 #container-port
